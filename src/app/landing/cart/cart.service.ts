@@ -17,6 +17,8 @@ export class CartService {
     ]
   };
 
+  cartItems = this.cart.cartItems;
+
   cartChanged = new Subject<Entree[]>();
 
   saveCart() {
@@ -28,7 +30,11 @@ export class CartService {
   }
 
   getCartItems() {
-    return this.cart.cartItems.slice();
+    // for (var i = 0; i < this.cartItems.length; i++) {
+    //   if ()
+    // }
+
+    return this.cartItems.slice();
   }
 
   getCartItem(id: string) {
