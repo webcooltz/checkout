@@ -1,0 +1,17 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Menu</span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-menu-item
+        *ngFor="let entree of menu; let i = index"
+        [entree]="entree"
+        [index]="i">
+      </app-menu-item>
+    </div>
+  </div>
+
+</div>

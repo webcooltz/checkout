@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Cart</span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-cart-item
+        *ngFor="let cartItem of cart.cartItems; let i = index"
+        [entree]="cartItem"
+        [index]="i">
+      </app-cart-item>
+    </div>
+  </div>
+
+  <button class="btn btn-success">Checkout</button>
+
+</div>
