@@ -4,6 +4,7 @@
   routerLinkActive="active">
     <h3>{{ entree.name }}</h3>
     <p>{{ entree.description }}</p>
+    <p>${{ entree.price }}</p>
     <div class="pull-right">
       <button
         class="btn btn-primary"
@@ -12,6 +13,7 @@
       </button>
       <img
         class="menu-img pull-right"
-        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fmoonshinebbq.com.au%2Fwp-content%2Fuploads%2F2016%2F08%2FPhoto-31-07-2016-5-31-01-PM-1.jpg%3Fssl%3D1&f=1&nofb=1">
+        [src]="entree.imgUrl"
+        alt="{{ entree.name }}">
     </div>
 </li>

@@ -12,6 +12,7 @@ export class CartService {
    {
     userId: '0',
     cartId: '0',
+    cost: 0,
     cartItems: [
 
     ]
@@ -47,6 +48,8 @@ export class CartService {
 
   addToOrder(entree: Entree) {
     this.cart.cartItems.push(entree);
+
+    this.cart.cost = this.calculateTotal();
   }
 
   deleteCartItem(cartItem: Entree) {
@@ -62,11 +65,23 @@ export class CartService {
 
     this.cartChanged.next(this.cart.cartItems.slice());
 
+    this.cart.cost = this.calculateTotal();
+
     // this.saveCart();
     }
 
+  calculateTotal() {
+    var total = 0;
+    for (var i = 0; i < this.cartItems.length; i++) {
+      total += this.cartItems[i].price;
+    }
+    return total;
+  }
+
   checkout() {
-    // request to save the cart/order to the DB
-    // then a web hook(?) to display on the admin side what orders they have
+
+
+    console.log(this.cartItems.slice());
+    console.log(this.cart.cost);
   }
 }

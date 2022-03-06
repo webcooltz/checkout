@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Entree } from '../../menu/entree.model';
 import { Cart } from '../cart.model';
 import { CartService } from '../cart.service';
 
@@ -16,6 +15,10 @@ export class CartListComponent implements OnInit {
 
   ngOnInit() {
     this.cart = this.cartService.getCartInfo();
+  }
+
+  onCheckout() {
+    this.cartService.checkout();
   }
 
 }

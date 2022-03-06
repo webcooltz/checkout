@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="row pad-left-right">
-      <span class="pull-left title">Cart</span>
+      <span class="pull-left title"><h2>Cart</h2></span>
     </div>
   </div>
   <div class="panel-body">
@@ -14,6 +14,12 @@
     </div>
   </div>
 
-  <button class="btn btn-success">Checkout</button>
+  <p>Total: ${{ cart.cost }}</p>
+
+  <button
+    class="btn btn-success"
+    (click)="onCheckout()">
+    Checkout
+  </button>
 
 </div>

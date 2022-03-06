@@ -1,27 +1,40 @@
 import { Injectable } from "@angular/core";
 import { Entree } from "./entree.model";
 
+import { HttpClient } from "@angular/common/http";
+import { Subject } from "rxjs";
+
 @Injectable({
   providedIn:'root'
 })
 export class MenuService {
 
-  menu: Entree[] = [
-    {
-      name: 'chicken',
-      description: 'a chicken breast',
-      id: '0',
-      imgUrl: '.../assets/images'
-    },
-    {
-      name: 'steak',
-      description: 'a steak',
-      id: '1',
-      imgUrl: '.../assets/images'
-    }
-  ];
+  menu: Entree[] = [];
 
-  constructor() {}
+  menuChanged = new Subject<Entree[]>();
+
+  constructor(private http: HttpClient) {}
+
+  fetchMenu() {
+    this.http
+      .get<Entree[]>(
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json'
+      )
+      .subscribe(menu => {
+        this.setMenu(menu);
+      }
+      ,(error: any) => {
+        console.log(error);
+      }
+      );
+
+      return this.menu.slice();
+  }
+
+  setMenu(menu: Entree[]) {
+    this.menu = menu;
+    this.menuChanged.next(this.menu.slice());
+  }
 
   getMenu() {
     return this.menu.slice();
