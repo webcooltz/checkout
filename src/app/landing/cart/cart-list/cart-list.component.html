@@ -6,6 +6,13 @@
   </div>
   <div class="panel-body">
     <div class="center-panel">
+
+      <div
+        *ngIf="cart.cartItems.length < 1"
+        class="alert alert-warning">
+        Your cart is empty
+      </div>
+
       <app-cart-item
         *ngFor="let cartItem of cart.cartItems; let i = index"
         [entree]="cartItem"
@@ -14,12 +21,19 @@
     </div>
   </div>
 
-  <p>Total: ${{ cart.cost }}</p>
+  <p>Total: ${{ cart.cost | number}}</p>
 
   <button
+    *ngIf="!checkoutPressed && cart.cost > 0"
     class="btn btn-success"
     (click)="onCheckout()">
     Checkout
   </button>
+
+  <div
+    *ngIf="checkoutPressed"
+    class="alert alert-success">
+    Checked out successfully. Thank you!
+  </div>
 
 </div>

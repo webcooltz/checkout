@@ -11,6 +11,8 @@ export class CartListComponent implements OnInit {
 
   cart!: Cart;
 
+  checkoutPressed: boolean = false;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
@@ -19,6 +21,7 @@ export class CartListComponent implements OnInit {
 
   onCheckout() {
     this.cartService.checkout();
+    this.checkoutPressed = true;
   }
 
 }
