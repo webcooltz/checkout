@@ -15,6 +15,7 @@ import { CartItemComponent } from './landing/cart/cart-list/cart-item/cart-item.
 import { MenuComponent } from './landing/menu/menu.component';
 import { MenuListComponent } from './landing/menu/menu-list/menu-list.component';
 import { MenuItemComponent } from './landing/menu/menu-list/menu-item/menu-item.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MenuItemComponent } from './landing/menu/menu-list/menu-item/menu-item.
     CartItemComponent,
     MenuComponent,
     MenuListComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

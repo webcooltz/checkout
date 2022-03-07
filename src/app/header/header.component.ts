@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminSerivce } from '../admin/admin.service';
+import { Preferences } from '../admin/preferences.model';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  restaurantTitle = "johnny's steakhouse";
+  preferences!: Preferences;
 
-  constructor() { }
+  // primaryColor!: string;
 
-  ngOnInit(): void {
+  constructor(private adminService: AdminSerivce) { }
+
+  ngOnInit() {
+    this.preferences = this.adminService.getPreferences();
+  }
+
+  getColor() {
+    // this.primaryColor = this.preferences.colors.primary;
   }
 
 }
