@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,7 +16,13 @@ import { CartItemComponent } from './landing/cart/cart-list/cart-item/cart-item.
 import { MenuComponent } from './landing/menu/menu.component';
 import { MenuListComponent } from './landing/menu/menu-list/menu-list.component';
 import { MenuItemComponent } from './landing/menu/menu-list/menu-item/menu-item.component';
+
 import { AdminComponent } from './admin/admin.component';
+import { AdminDetailComponent } from './admin/admin-detail/admin-detail.component';
+import { AdminEditComponent } from './admin/admin-edit/admin-edit.component';
+
+import { MenuEditComponent } from './landing/menu/menu-edit/menu-edit.component';
+import { MenuEditItemComponent } from './landing/menu/menu-edit/menu-edit-item/menu-edit-item.component';
 
 @NgModule({
   declarations: [
@@ -28,13 +35,18 @@ import { AdminComponent } from './admin/admin.component';
     MenuComponent,
     MenuListComponent,
     MenuItemComponent,
-    AdminComponent
+    AdminComponent,
+    AdminDetailComponent,
+    AdminEditComponent,
+    MenuEditComponent,
+    MenuEditItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

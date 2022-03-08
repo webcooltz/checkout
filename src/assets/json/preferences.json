@@ -1,0 +1,13 @@
+{
+	"preferences": {
+		"title": "Johnny's Steakhouse",
+		"logoImgUrl": ".../images/steak.png",
+		"colors": {
+      "primary": "#ffffff",
+      "secondary": "#fff000",
+      "tertiary": "#000000",
+      "fourth": "#000fff",
+      "fifth": "#f0f0f0"
+    }
+	}
+}

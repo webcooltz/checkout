@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title"><h2>Admin Details</h2></span>
+      <span class="pull-right">
+      </span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+
+      <h3><strong>Preferences</strong>:</h3>
+      <hr>
+      <div class="form-group">
+        <strong>Site title:</strong> {{ this.preferences.title }}
+        <!-- <input type="text" [(ngModel)]="this.preferences.title"> -->
+        <br><br>
+        <strong>Site logo address:</strong> {{ this.preferences.logoImgUrl }}
+        <br><br>
+        <strong>Site colors:</strong>
+        <ul>
+          <li>
+            <strong>Primary</strong>: {{ this.preferences.colors.primary }} - <div [ngStyle]="{'background-color': '{{ this.preferences.colors.primary }}'}">Primary</div>
+          </li>
+          <li>
+            <strong>Secondary</strong>: {{ this.preferences.colors.secondary }}
+            <!-- <input type="text" [(ngModel)]="this.preferences.colors.secondary"> -->
+          </li>
+          <li>
+            <strong>Tertiary</strong>: {{ this.preferences.colors.tertiary }}
+          </li>
+          <li>
+            <strong>Fourth</strong>: {{ this.preferences.colors.fourth }}
+          </li>
+          <li>
+            <strong>Fifth</strong>: {{ this.preferences.colors.fifth }}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
