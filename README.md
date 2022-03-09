@@ -2,7 +2,9 @@
 
 ## Purpose
 
-The purpose of the app is to help small businesses with an easy-to-use and helpful online ordering system.
+The purpose of the app is to help small businesses with an easy-to-use and helpful online ordering system. It could be open-source or sold as a SAAS.
+
+The other purpose is to get experience developing full-stack web apps and to showcase that to potential employers.
 
 ## Features
 
@@ -28,6 +30,10 @@ You can use `ng generate directive|pipe|service|class|guard|interface|enum|modul
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Deployment
+
+Run `firebase deploy` after running the build command. The site will be up shortly at "https://checkout-17e0b.web.app/"
 
 ## Running unit tests
 
