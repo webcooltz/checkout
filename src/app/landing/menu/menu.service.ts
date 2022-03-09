@@ -31,6 +31,13 @@ export class MenuService {
       return this.menu.slice();
   }
 
+  setMenu(menu: Entree[]) {
+    this.menu = menu;
+    this.menuChanged.next(this.menu);
+
+    // this.storeMenu();
+  }
+
   storeMenu() {
     let menu = this.getMenu();
     this.http
@@ -41,13 +48,6 @@ export class MenuService {
       .subscribe(response => {
       console.log(response)
     });
-  }
-
-  setMenu(menu: Entree[]) {
-    this.menu = menu;
-    this.menuChanged.next(this.menu);
-
-    this.storeMenu();
   }
 
   getMenu() {

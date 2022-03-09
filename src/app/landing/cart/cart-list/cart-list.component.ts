@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminSerivce } from 'src/app/admin/admin.service';
+import { Preferences } from 'src/app/admin/preferences.model';
 import { Cart } from '../cart.model';
 import { CartService } from '../cart.service';
 
@@ -13,10 +15,14 @@ export class CartListComponent implements OnInit {
 
   checkoutPressed: boolean = false;
 
-  constructor(private cartService: CartService) { }
+  preferences!: Preferences;
+
+  constructor(private cartService: CartService, private adminService: AdminSerivce) { }
 
   ngOnInit() {
     this.cart = this.cartService.getCartInfo();
+
+    this.preferences = this.adminService.getPreferences();
   }
 
   onCheckout() {

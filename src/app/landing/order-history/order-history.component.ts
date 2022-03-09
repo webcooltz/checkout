@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart } from '../cart/cart.model';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-order-history',
@@ -35,9 +36,10 @@ export class OrderHistoryComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.orders = this.cartService.fetchOrders();
   }
 
   search(value: string) {

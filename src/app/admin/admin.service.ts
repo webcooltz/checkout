@@ -27,7 +27,7 @@ export class AdminSerivce {
 
   }
 
-  storeDocuments() {
+  storePreferences() {
     let preferences = this.getPreferences();
     this.http
       .put(
@@ -45,7 +45,7 @@ export class AdminSerivce {
 
   setPreferences(preferences: Preferences) {
     this.preferences = preferences;
-    this.storeDocuments();
+    this.storePreferences();
   }
 
 }

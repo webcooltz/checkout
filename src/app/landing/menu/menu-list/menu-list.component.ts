@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AdminSerivce } from 'src/app/admin/admin.service';
 import { Entree } from '../entree.model';
 import { MenuService } from '../menu.service';
+import { Preferences } from 'src/app/admin/preferences.model';
 
 @Component({
   selector: 'app-menu-list',
@@ -14,7 +16,9 @@ export class MenuListComponent implements OnInit {
 
   private menuChangeSub!: Subscription;
 
-  constructor(private menuService: MenuService) { }
+  preferences!: Preferences;
+
+  constructor(private menuService: MenuService, private adminService: AdminSerivce) { }
 
   ngOnInit() {
     this.menu = this.menuService.fetchMenu();
@@ -25,6 +29,8 @@ export class MenuListComponent implements OnInit {
           this.menu = menu;
         }
       )
+
+      this.preferences = this.adminService.getPreferences();
   }
 
   onReload() {

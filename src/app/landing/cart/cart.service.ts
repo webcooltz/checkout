@@ -21,14 +21,36 @@ export class CartService {
       ]
     };
 
+
+  orders: Cart[] = [];
+
   cartItems = this.cart.cartItems;
 
   cartChanged = new Subject<Entree[]>();
 
   constructor(private http: HttpClient) {}
 
-  fetchCart() {
+  fetchOrders() {
+    this.http
+      .get<Cart[]>(
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/orders.json'
+      )
+      .subscribe(orders => {
+        this.setCart(orders);
+      }
+      ,(error: any) => {
+        console.log(error);
+      }
+      );
 
+      console.log(this.orders);
+
+      return this.orders;
+
+  }
+
+  setCart(orders: Cart[]) {
+    this.orders = orders;
   }
 
   storeCart() {
