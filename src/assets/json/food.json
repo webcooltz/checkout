@@ -2,41 +2,41 @@
 	"entrees": [{
 		"id": "0",
 		"name": "chicken",
-		"imageUrl": "../assets/images/chicken.jpg",
+		"imgUrl": "../assets/images/chicken.jpg",
 		"description": "a nice chicken breast",
     "price": 9.99
 	}, {
 		"id": "1",
 		"name": "steak",
-		"imageUrl": "../assets/images/steak.jpg",
+		"imgUrl": "../assets/images/steak.jpg",
 		"description": "a nice juicy steak",
     "price": 10.99
 	},
   {
 		"id": "2",
 		"name": "burger",
-		"imageUrl": "../assets/images/burger.jpg",
+		"imgUrl": "../assets/images/burger.jpg",
 		"description": "a well-done burger",
     "price": 8.99
 	},
   {
 		"id": "3",
 		"name": "applesauce",
-		"imageUrl": "../assets/images/applesauce.jpg",
+		"imgUrl": "../assets/images/applesauce.jpg",
 		"description": "applesauce",
     "price": 2.99
 	},
   {
 		"id": "4",
 		"name": "coleslaw",
-		"imageUrl": "../assets/images/coleslaw.jpg",
+		"imgUrl": "../assets/images/coleslaw.jpg",
 		"description": "coleslaw",
     "price": 2.99
 	},
   {
 		"id": "5",
 		"name": "fries",
-		"imageUrl": "../assets/images/fries.jpg",
+		"imgUrl": "../assets/images/fries.jpg",
 		"description": "fries",
     "price": 4.99
 	}

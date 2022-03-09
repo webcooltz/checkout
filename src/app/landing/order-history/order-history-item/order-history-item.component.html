@@ -1,0 +1,35 @@
+<li
+  class="list-group-item clearfix">
+
+  <!-- <table>
+    <tr>
+      <th>Order/Cart ID</th>
+      <th>User ID</th>
+      <th>Cost</th>
+      <th>Items Ordered</th>
+      <th>Time Ordered</th>
+      <th>Time Ready</th>
+    </tr>
+    <tr>
+      <td>{{ order.cartId }}</td>
+      <td>{{ order.userId }}</td>
+      <td>${{ order.cost }}</td>
+      <td>{{ order.entree }}</td>
+      <td>{{ order.timeOrdered }}</td>
+      <td>{{ order.timeReady }}</td>
+    </tr>
+  </table> -->
+
+    <p><strong>Order ID</strong>: {{ order.cartId }}</p>
+    <p><strong>User ID</strong>: {{ order.userId }}</p>
+    <p><strong>Order cost</strong>: ${{ order.cost }}</p>
+    <p><strong>Time Ordered</strong>: {{ order.timeOrdered | date:'MMM dd, yyyy - hh:mm:ss a' }}</p>
+    <p><strong>Time Ready</strong>: {{ order.timeReady | date:'MMM dd, yyyy - hh:mm a' }}</p>
+
+    <div class="pull-right">
+      <button
+        class="disabled btn btn-info">
+        Edit Order
+      </button>
+    </div>
+</li>

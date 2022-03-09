@@ -27,4 +27,8 @@ export class MenuEditComponent implements OnInit {
       )
   }
 
+  onSetMenu(menu: Entree[]) {
+    this.menuService.setMenu(menu);
+  }
+
 }

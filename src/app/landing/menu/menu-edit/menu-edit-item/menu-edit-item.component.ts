@@ -9,7 +9,7 @@ import { MenuService } from '../../menu.service';
 })
 export class MenuEditItemComponent implements OnInit {
 
-  // menu: Entree[] = [];
+  menu!: Entree[];
 
   @Input() entree!: Entree;
   @Input() index!: number;
@@ -17,11 +17,15 @@ export class MenuEditItemComponent implements OnInit {
   constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-    // this.menu = this.menuService.getMenu();
+    this.menu = this.menuService.getMenu();
   }
 
   editItem() {
 
+  }
+
+  onSaveEntree(menu: Entree[]) {
+    this.menuService.setMenu(menu);
   }
 
 }

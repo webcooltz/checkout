@@ -4,16 +4,39 @@
       <span class="pull-left title"><h2>Menu</h2></span>
       <span class="pull-right">
       </span>
-
     </div>
   </div>
   <div class="panel-body">
     <div class="center-panel">
+
+      <form
+        id="admin-edit"
+        (ngSubmit)="onSetMenu(menu)"
+        #f="ngForm">
+
+        <div
+          class="alert alert-danger"
+          *ngIf="!f.valid">
+          One of your inputs is not valid. Please check and try again.
+        </div>
+
+        <button
+          class="btn btn-success"
+          type="submit"
+          [disabled]="!f.valid">
+          Save
+        </button>
+
+        <br><br>
+
       <app-menu-edit-item
         *ngFor="let entree of menu; let i = index"
         [entree]="entree"
         [index]="i">
       </app-menu-edit-item>
+
+      </form>
+
     </div>
   </div>
 

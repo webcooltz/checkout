@@ -9,14 +9,15 @@ import { Cart } from "./cart.model";
 export class CartService {
 
   cart: Cart =
-   {
-    userId: '0',
-    cartId: '0',
-    cost: 0,
-    cartItems: [
-
-    ]
-  };
+    {
+      cartId: '0',
+      userId: '0',
+      cost: 22,
+      timeOrdered!: new Date(),
+      timeReady: new Date(),
+      cartItems: [
+      ]
+    };
 
   cartItems = this.cart.cartItems;
 

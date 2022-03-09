@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title"><h2>Order Queue</h2></span>
+      <span class="pull-right">
+      </span>
+
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-order-item
+        *ngFor="let order of orders; let i = index"
+        [order]="order"
+        [index]="i">
+      </app-order-item>
+    </div>
+  </div>
+
+</div>

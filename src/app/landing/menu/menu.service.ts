@@ -31,9 +31,23 @@ export class MenuService {
       return this.menu.slice();
   }
 
+  storeMenu() {
+    let menu = this.getMenu();
+    this.http
+      .put(
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json',
+        menu
+        )
+      .subscribe(response => {
+      console.log(response)
+    });
+  }
+
   setMenu(menu: Entree[]) {
     this.menu = menu;
-    this.menuChanged.next(this.menu.slice());
+    this.menuChanged.next(this.menu);
+
+    this.storeMenu();
   }
 
   getMenu() {
