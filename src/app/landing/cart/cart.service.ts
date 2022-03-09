@@ -3,6 +3,8 @@ import { Subject } from "rxjs";
 import { Entree } from "../menu/entree.model";
 import { Cart } from "./cart.model";
 
+import { HttpClient } from "@angular/common/http";
+
 @Injectable({
   providedIn:'root'
 })
@@ -23,12 +25,22 @@ export class CartService {
 
   cartChanged = new Subject<Entree[]>();
 
-  saveCart() {
-
-  }
+  constructor(private http: HttpClient) {}
 
   fetchCart() {
 
+  }
+
+  storeCart() {
+    let cart = this.getCartInfo();
+    this.http
+      .put(
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/orders.json',
+        cart
+        )
+      .subscribe(response => {
+      console.log(response)
+    });
   }
 
   getCartItems() {
@@ -80,7 +92,7 @@ export class CartService {
   }
 
   checkout() {
-
+    this.storeCart();
 
     console.log(this.cartItems.slice());
     console.log(this.cart.cost);
