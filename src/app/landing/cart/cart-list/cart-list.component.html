@@ -10,6 +10,19 @@
   <div class="panel-body">
     <div class="center-panel">
 
+      <div class="alert">
+        Pickup Time:
+        <h4>Basic mat-select</h4>
+          <mat-form-field appearance="fill">
+            <mat-label>Pickup Time</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let time of times" [value]="times">
+                {{ time | date:'MMM dd - hh:mm' }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
       <div
         *ngIf="cart.cartItems.length < 1"
         class="alert alert-warning">

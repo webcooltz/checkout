@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select'
 
 // main
 import { AppComponent } from './app.component';
@@ -69,7 +70,8 @@ import { CartFilterPipe } from './landing/order-history/order-filter.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [CartService, MenuService, AdminSerivce],
   bootstrap: [AppComponent]
