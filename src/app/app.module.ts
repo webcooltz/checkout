@@ -42,6 +42,11 @@ import { AdminSerivce } from './admin/admin.service';
 
 // pipes
 import { CartFilterPipe } from './landing/order-history/order-filter.pipe';
+import { UserComponent } from './user/user.component';
+import { FooterComponent } from './footer/footer.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,12 @@ import { CartFilterPipe } from './landing/order-history/order-filter.pipe';
     OrderItemComponent,
     OrderHistoryComponent,
     OrderHistoryItemComponent,
-    CartFilterPipe
+    CartFilterPipe,
+    UserComponent,
+    FooterComponent,
+    SettingsComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

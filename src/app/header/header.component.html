@@ -3,7 +3,6 @@
   [style.background-color]="this.preferences.colors.primary">
   <div class="container-fluid">
 
-  <!-- Brand/logo -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#example-1" aria-expanded="false">
     <span class="sr-only">Toggle navigation</span>
@@ -13,7 +12,9 @@
   </button>
 
   <a routerLink="" class="navbar-brand">
-    <h1 class="title-h1">
+    <h1
+      [style.color]="this.preferences.colors.fourth"
+      class="title-h1">
       {{ preferences.title }}
     </h1>
     </a>
@@ -24,28 +25,40 @@
       <li routerLinkActive="active">
         <a routerLink="landing">Order</a>
       </li>
-      <li routerLinkActive="active">
+      <li
+        *ngIf="user.adminLevel < 4"
+        routerLinkActive="active">
         <a routerLink="admin">Admin</a>
       </li>
-      <li routerLinkActive="active">
+      <li
+        *ngIf="user.adminLevel <= 3"
+        routerLinkActive="active">
         <a routerLink="queue">Queue</a>
       </li>
       <li routerLinkActive="active">
         <a routerLink="history">History</a>
       </li>
     </ul>
+
+    <div class="dropdown pull-right">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        User: {{ user.username }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <ul class="nav">
+          <li *ngIf="loggedIn == false">
+            <a class="dropdown-item" href="#">Login</a>
+          </li>
+          <li *ngIf="loggedIn == true">
+            <a class="dropdown-item" href="#">Logout</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   </div>
   </nav>
-
-<!-- <ul class="nav title-ul">
-  <li>
-    <img
-      class="logo-img"
-      [src]="imgUrl">
-  </li>
-  <li>
-    <h1 class="title-h1">{{ restaurantTitle }}</h1>
-  </li>
-</ul> -->

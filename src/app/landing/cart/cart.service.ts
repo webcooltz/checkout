@@ -66,10 +66,6 @@ export class CartService {
   }
 
   getCartItems() {
-    // for (var i = 0; i < this.cartItems.length; i++) {
-    //   if ()
-    // }
-
     return this.cartItems.slice();
   }
 
@@ -114,6 +110,9 @@ export class CartService {
   }
 
   checkout() {
+
+    this.cart = new Cart(this.cart.userId, this.cart.cartId, this.cartItems, this.cart.cost, this.cart.timeOrdered, this.cart.timeReady);
+
     this.storeCart();
 
     console.log(this.cartItems.slice());
