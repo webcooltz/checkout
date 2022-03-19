@@ -1,50 +1,69 @@
+const express = require('express');
+const path = require('path');
 const http = require('http');
-const app = require('./backend/app');
-const debug = require('debug')('node-angular');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+// const debug = require('debug')('node-angular');
 
-const normalizePort = val => {
-  var port = parseInt(val, 10);
+// import the routing file to handle the default (index) route
+const index = require('./backend/routes/app');
+const menuRoutes = require('./backend/routes/menu');
+const adminRoutes = require('./backend/routes/admin');
 
-  if (isNaN(port)) {
-    return val;
-  }
+// establish a connection to the mongo database
+// mongoose.connect('mongodb://localhost:27017/checkout',
+//    { useNewUrlParser: true }, (err, res) => {
+//       if (err) {
+//          console.log('Connection failed: ' + err);
+//       }
+//       else {
+//          console.log('Connected to database!');
+//       }
+//    }
+// );
 
-  if (port >= 0) {
-    return port;
-  }
+var app = express();
 
-  return false;
-};
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(cookieParser());
 
-const onError = error => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-  const bind = typeof addr === "string" ? "pipe" + addr : "port " + port;
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
+app.use(logger('dev'));
 
-const onListening = () => {
-  const addr = server.address();
-  const bind = typeof addr === "string" ? "pipe" + addr : "port" + port;
-  debug("Listening on " + bind);
-};
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+  );
+  next();
+});
 
-const port = normalizePort(process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'dist/checkout')));
+
+// map the default route ('/') to the index route
+app.use('/', index);
+app.use('./menu', menuRoutes);
+app.use('./admin', adminRoutes);
+
+// Tell express to map all other non-defined routes back to the index page
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/checkout/index.html'));
+});
+
+const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app);
-server.on("error", onError);
-server.on("listening", onListening);
-server.listen(port);
+
+server.listen(port, function() {
+  console.log('API running on localhost: ' + port)
+});
