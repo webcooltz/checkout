@@ -18,7 +18,7 @@ export class MenuService {
   fetchMenu() {
     this.http
       .get<Entree[]>(
-        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json'
+        'https://localhost:3000/menu'
       )
       .subscribe(menu => {
         this.setMenu(menu);

@@ -12,17 +12,16 @@ const index = require('./backend/routes/app');
 const menuRoutes = require('./backend/routes/menu');
 const adminRoutes = require('./backend/routes/admin');
 
-// establish a connection to the mongo database
-// mongoose.connect('mongodb://localhost:27017/checkout',
-//    { useNewUrlParser: true }, (err, res) => {
-//       if (err) {
-//          console.log('Connection failed: ' + err);
-//       }
-//       else {
-//          console.log('Connected to database!');
-//       }
-//    }
-// );
+mongoose.connect('mongodb://localhost:27017/checkout',
+   { useNewUrlParser: true }, (err, res) => {
+      if (err) {
+         console.log('Connection failed: ' + err);
+      }
+      else {
+         console.log('Connected to database!');
+      }
+   }
+);
 
 var app = express();
 

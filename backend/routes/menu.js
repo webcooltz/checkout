@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-// const Entree = require('../model/entree');
+const Menu = require('../models/menu');
 
 
-router.get('/', (req, res, next) => {
-  Contact.find()
+router.get('/landing', (req, res, next) => {
+  Menu.find()
     .then(menu => {
       res.status(200).json({
           message: 'menu fetched successfully!',

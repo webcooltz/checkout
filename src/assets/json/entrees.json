@@ -1,0 +1,43 @@
+[{
+  "id": "0",
+  "name": "Chicken Breast",
+  "description": "A nice chicken breast.",
+  "price": 9.99,
+  "imgUrl": "../assets/images/chicken.jpg"
+},
+{
+  "id": "1",
+  "name": "Steak",
+  "description": "A nice juicy steak.",
+  "price": 10.99,
+  "imgUrl": "../assets/images/steak.jpg"
+},
+{
+  "id": "2",
+  "name": "Burger",
+  "description": "Self-explanatory.",
+  "price": 8.99,
+  "imgUrl": "../assets/images/burger.jpg"
+},
+{
+  "id": "1",
+  "name": "Applesauce",
+  "description": "Yum.",
+  "price": 2.99,
+  "imgUrl": "../assets/images/applesauce.jpg"
+},
+{
+  "id": "1",
+  "name": "Coleslaw",
+  "description": "Who wants this?",
+  "price": 2.99,
+  "imgUrl": "../assets/images/coleslaw.jpg"
+},
+{
+  "id": "1",
+  "name": "Fries",
+  "description": "Nuff said.",
+  "price": 4.99,
+  "imgUrl": "../assets/images/fries.jpg"
+}
+]
