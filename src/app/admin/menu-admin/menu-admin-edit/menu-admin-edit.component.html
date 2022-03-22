@@ -1,1 +1,110 @@
-<p>menu-admin-edit works!</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title"><h2>Add or Edit Item</h2></span>
+      <span class="pull-right">
+      </span>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+
+      <form
+      id="document-edit"
+      (ngSubmit)="onSave(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="name">Entree Name:</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            size="120"
+            max="120"
+            name="name"
+            [ngModel]=entree?.name
+            required
+            #name="ngModel"
+            >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="description">Entree Description:</label>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            size="120"
+            max="255"
+            name="description"
+            [ngModel]=entree?.description
+            #description="ngModel"
+            >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="url">Entree Image URL:</label>
+          <input
+            type="text"
+            id="url"
+            class="form-control"
+            size="150"
+            max="255"
+            name="imgUrl"
+            [ngModel]=entree?.imgUrl
+            required
+            #imgUrl="ngModel"
+            >
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="url">Entree Price:</label>
+          <input
+            type="text"
+            id="url"
+            class="form-control"
+            size="150"
+            max="255"
+            name="price"
+            [ngModel]=entree?.price
+            required
+            #price="ngModel"
+            >
+        </div>
+      </div>
+
+      <div
+        class="alert alert-danger"
+        *ngIf="!f.valid">
+        These fields are required.
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid">
+            {{ editMode ? 'Update' : 'Add'}}
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+    </div>
+  </div>
+
+</div>

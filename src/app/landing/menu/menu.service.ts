@@ -39,7 +39,7 @@ export class MenuService {
     this.menu = menu;
     this.menuChanged.next(this.menu);
 
-    // this.storeMenu();
+    this.storeMenu();
   }
 
   storeMenu() {
@@ -74,13 +74,34 @@ export class MenuService {
     this.storeMenu();
   }
 
-  // updateMenu() {
+  updateMenu(originalEntree: Entree, newEntree: Entree) {
+    if (!originalEntree) {
+      return;
+    }
+    const pos = this.menu.indexOf(originalEntree);
+    if (pos < 0) {
+      return;
+    }
+    newEntree.id = originalEntree.id;
+    this.menu[pos] = newEntree;
+    this.menuChanged.next(this.menu.slice());
 
-  // }
+    this.storeMenu();
+  }
 
-  // deleteMenuItem() {
+  deleteMenuItem(entree: Entree) {
+    if (!entree) {
+      return;
+    }
+    const pos = this.menu.indexOf(entree);
+    if (pos < 0) {
+      return;
+    }
+    this.menu.splice(pos, 1);
+    this.menuChanged.next(this.menu.slice());
 
-  // }
+    this.storeMenu();
+  }
 
   getMaxId(): number {
     var maxId = 0;

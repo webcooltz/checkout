@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'menu-admin', component: MenuAdminComponent, children: [
     { path: '', component: MenuAdminStartComponent },
     { path: 'menu-admin-detail', component: MenuAdminDetailComponent },
-    { path: 'menu-admin-edit', component: MenuAdminEditComponent }
+    { path: ':id', component: MenuAdminEditComponent },
+    { path: 'new', component: MenuAdminEditComponent }
   ] },
   { path: 'queue', component: OrderQueueComponent },
   { path: 'history', component: OrderHistoryComponent }

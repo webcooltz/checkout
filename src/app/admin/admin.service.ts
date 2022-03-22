@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Preferences } from "./preferences.model";
 
 @Injectable({
@@ -21,10 +22,24 @@ export class AdminSerivce {
         }
     }
 
+    prefChanged = new Subject<Preferences>();
+
   constructor(private http: HttpClient) {}
 
   fetchPreferences() {
+    this.http
+      .get<Preferences>(
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/preferences.json'
+      )
+      .subscribe(pref => {
+        this.setPreferences(pref);
+      }
+      ,(error: any) => {
+        console.log(error);
+      }
+      );
 
+      return this.preferences;
   }
 
   storePreferences() {

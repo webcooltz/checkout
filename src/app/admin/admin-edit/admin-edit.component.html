@@ -11,7 +11,7 @@
     <div class="center-panel">
 
       <form
-        id="admin-edit"
+        id="admin-edit" class="form"
         (ngSubmit)="savePreferences(f)"
         #f="ngForm">
 
@@ -63,7 +63,7 @@
             max="120"
             [ngModel]="preferences?.colors?.primary"
             required
-            #logoImgUrl="ngModel"
+            #colorPrimary="ngModel"
             >
 
           <label for="secondaryColor">Secondary:</label>

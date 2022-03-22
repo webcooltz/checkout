@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Entree } from '../../entree.model';
 import { MenuService } from '../../menu.service';
 
@@ -14,14 +15,24 @@ export class MenuEditItemComponent implements OnInit {
   @Input() entree!: Entree;
   @Input() index!: number;
 
-  constructor(private menuService: MenuService) { }
+  id!: string;
+
+  constructor(private menuService: MenuService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.menu = this.menuService.getMenu();
+
   }
 
-  editItem() {
+  // editItem() {
 
+  // }
+
+  onDelete() {
+    this.menuService.deleteMenuItem(this.entree);
+    // this.router.navigate([''], {relativeTo: this.route});
   }
 
   onSaveEntree(menu: Entree[]) {

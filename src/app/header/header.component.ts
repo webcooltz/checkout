@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    this.preferences = this.adminService.getPreferences();
+    this.preferences = this.adminService.fetchPreferences();
 
     this.user = this.userService.getUser();
   }
