@@ -9,23 +9,11 @@
   <div class="panel-body">
     <div class="center-panel">
 
-      <form
-        id="admin-edit"
-        (ngSubmit)="onSetMenu(menu)"
-        #f="ngForm">
-
-        <div
-          class="alert alert-danger"
-          *ngIf="!f.valid">
-          One of your inputs is not valid. Please check and try again.
-        </div>
-
-        <button
-          class="btn btn-success"
-          type="submit"
-          [disabled]="!f.valid">
-          Save
-        </button>
+      <button
+        class="btn btn-primary"
+        (click)="addEntree(entree)">
+        Add Entree
+      </button>
 
         <br><br>
 
@@ -35,7 +23,6 @@
         [index]="i">
       </app-menu-edit-item>
 
-      </form>
 
     </div>
   </div>

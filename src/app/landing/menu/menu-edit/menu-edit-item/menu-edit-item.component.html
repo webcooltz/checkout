@@ -1,76 +1,18 @@
-<div class="form-group">
+<li
+  class="list-group-item clearfix">
+    <h3>{{ entree.name }}</h3>
+    <p>{{ entree.description }}</p>
+    <p>${{ entree.price }}</p>
 
-  <li
-    class="list-group-item clearfix">
-
-    <label for="title">Name:</label>
-    <input
-      type="text" class="form-control" id="name"
-      name="name"
-      size="120"
-      max="120"
-      [ngModel]="entree?.name"
-      required
-      #name="ngModel"
-    >
-
-    <label for="title">Description:</label>
-    <input
-      type="text" class="form-control" id="description"
-      name="description"
-      size="120"
-      max="120"
-      [ngModel]="entree?.description"
-      required
-      #description="ngModel"
-      >
-
-    <label for="title">Price:</label>
-    <input
-      type="text" class="form-control" id="price"
-      name="price"
-      size="120"
-      max="120"
-      [ngModel]="entree?.price"
-      required
-      #price="ngModel"
-      >
+      <button
+        class="btn btn-warning">
+        Edit
+      </button>
 
     <div class="pull-right">
-
-        <!-- <button
-          class="btn btn-warning"
-          (click)="editItem()">
-          Edit
-        </button> -->
-
-      <label for="title">Image URL:</label>
-      <input
-        type="text" class="form-control" id="imgUrl"
-        name="imgUrl"
-        size="120"
-        max="120"
-        [ngModel]="entree?.imgUrl"
-        required
-        #imgUrl="ngModel"
-        >
-
-        <br><br>
-
       <img
         class="menu-img pull-right"
         [src]="entree.imgUrl"
         alt="{{ entree.name }}">
-
-        <!-- <button
-          class="btn btn-success"
-          type="submit"
-          (click)="onSaveEntree(menu)">
-          Save
-        </button> -->
-
     </div>
-
-  </li>
-
-</div>
+</li>

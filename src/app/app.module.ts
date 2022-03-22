@@ -47,6 +47,10 @@ import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
+import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
+import { MenuAdminDetailComponent } from './admin/menu-admin/menu-admin-detail/menu-admin-detail.component';
+import { MenuAdminEditComponent } from './admin/menu-admin/menu-admin-edit/menu-admin-edit.component';
+import { MenuAdminStartComponent } from './admin/menu-admin/menu-admin-start/menu-admin-start.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,11 @@ import { SignupComponent } from './user/signup/signup.component';
     FooterComponent,
     SettingsComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    MenuAdminComponent,
+    MenuAdminDetailComponent,
+    MenuAdminEditComponent,
+    MenuAdminStartComponent
   ],
   imports: [
     BrowserModule,

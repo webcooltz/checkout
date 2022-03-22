@@ -26,9 +26,14 @@
         <a routerLink="landing">Order</a>
       </li>
       <li
-        *ngIf="user.adminLevel < 4"
+        *ngIf="user.adminLevel < 3"
         routerLinkActive="active">
         <a routerLink="admin">Admin</a>
+      </li>
+      <li
+        *ngIf="user.adminLevel < 3"
+        routerLinkActive="active">
+        <a routerLink="menu-admin">Edit Menu</a>
       </li>
       <li
         *ngIf="user.adminLevel <= 3"

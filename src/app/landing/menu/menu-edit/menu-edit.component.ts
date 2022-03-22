@@ -12,6 +12,8 @@ export class MenuEditComponent implements OnInit {
 
   menu: Entree[] = [];
 
+  entree!: Entree;
+
   private menuChangeSub!: Subscription;
 
   constructor(private menuService: MenuService) { }
@@ -29,6 +31,10 @@ export class MenuEditComponent implements OnInit {
 
   onSetMenu(menu: Entree[]) {
     this.menuService.setMenu(menu);
+  }
+
+  addEntree(entree: Entree) {
+    this.menuService.addMenuItem(entree);
   }
 
 }

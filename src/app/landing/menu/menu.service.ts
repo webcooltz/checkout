@@ -10,15 +10,19 @@ import { Subject } from "rxjs";
 export class MenuService {
 
   menu: Entree[] = [];
+  maxMenuId!: number;
 
   menuChanged = new Subject<Entree[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.menu = [];
+    this.maxMenuId = this.getMaxId();
+  }
 
   fetchMenu() {
     this.http
       .get<Entree[]>(
-        'https://localhost:3000/menu'
+        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json'
       )
       .subscribe(menu => {
         this.setMenu(menu);
@@ -58,9 +62,17 @@ export class MenuService {
     return this.menu[+id];
   }
 
-  // addMenuItem() {
+  addMenuItem(newEntree: Entree) {
+    if (!newEntree) {
+      return;
+    }
+    this.maxMenuId++;
+    newEntree.id = this.maxMenuId.toString();
+    this.menu.push(newEntree);
+    this.menuChanged.next(this.menu.slice());
 
-  // }
+    this.storeMenu();
+  }
 
   // updateMenu() {
 
@@ -69,5 +81,17 @@ export class MenuService {
   // deleteMenuItem() {
 
   // }
+
+  getMaxId(): number {
+    var maxId = 0;
+    var currentId;
+    for (var i = 0; i < this.menu.length; i++) {
+      currentId = parseInt(this.menu[i].id);
+      if (currentId > maxId) {
+        maxId = currentId;
+      }
+    }
+    return maxId;
+  }
 
 }
