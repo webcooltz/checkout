@@ -13,9 +13,8 @@ import { Preferences } from 'src/app/admin/preferences.model';
 export class MenuListComponent implements OnInit {
 
   menu: Entree[] = [];
-
   private menuChangeSub!: Subscription;
-
+  private adminChangeSub!: Subscription;
   preferences!: Preferences;
 
   constructor(private menuService: MenuService, private adminService: AdminService) { }
@@ -30,7 +29,14 @@ export class MenuListComponent implements OnInit {
         }
       )
 
-      this.preferences = this.adminService.getPreferences();
+      this.preferences = this.adminService.fetchPreferences();
+
+      this.adminChangeSub = this.adminService.prefChanged
+      .subscribe(
+        (preferences: Preferences) => {
+          this.preferences = preferences;
+        }
+      )
   }
 
   onReload() {
@@ -39,6 +45,8 @@ export class MenuListComponent implements OnInit {
 
   ngOnDestroy() {
     this.menuChangeSub.unsubscribe();
+
+    this.adminChangeSub.unsubscribe();
   }
 
 }

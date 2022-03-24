@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AdminService } from '../admin.service';
 import { Preferences } from '../preferences.model';
 
@@ -8,16 +9,23 @@ import { Preferences } from '../preferences.model';
   templateUrl: './admin-edit.component.html',
   styleUrls: ['./admin-edit.component.css']
 })
-export class AdminEditComponent implements OnInit {
+export class AdminEditComponent implements OnInit, OnDestroy {
 
   preferences!: Preferences;
-
+  adminChangeSub!: Subscription;
   @ViewChild('f') aForm!: NgForm;
 
   constructor(private adminService: AdminService) { }
 
   ngOnInit() {
-    this.preferences = this.adminService.getPreferences();
+    this.preferences = this.adminService.fetchPreferences();
+
+    this.adminChangeSub = this.adminService.prefChanged
+      .subscribe(
+        (preferences: Preferences) => {
+          this.preferences = preferences;
+        }
+      )
   }
 
   savePreferences(form: NgForm) {
@@ -29,7 +37,11 @@ export class AdminEditComponent implements OnInit {
     this.preferences.colors.secondary = value.colorSecondary;
     this.preferences.colors.tertiary = value.colorTertiary;
 
-    this.adminService.setPreferences(this.preferences);
+    this.adminService.updatePreferences(this.preferences);
   }
+
+  ngOnDestroy() {
+    this.adminChangeSub.unsubscribe();
+}
 
 }
