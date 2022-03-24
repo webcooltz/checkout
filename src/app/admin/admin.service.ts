@@ -6,7 +6,7 @@ import { Preferences } from "./preferences.model";
 @Injectable({
   providedIn:'root'
 })
-export class AdminSerivce {
+export class AdminService {
 
   preferences: Preferences =
     {

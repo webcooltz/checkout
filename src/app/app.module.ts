@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
+import { FooterComponent } from './footer/footer.component';
 
 // cart
 import { CartComponent } from './landing/cart/cart.component';
@@ -38,15 +39,18 @@ import { OrderHistoryItemComponent } from './landing/order-history/order-history
 // services
 import { CartService } from './landing/cart/cart.service';
 import { MenuService } from './landing/menu/menu.service';
-import { AdminSerivce } from './admin/admin.service';
+import { AdminService } from './admin/admin.service';
 
 // pipes
 import { CartFilterPipe } from './landing/order-history/order-filter.pipe';
+
+// Login, user, settings
 import { UserComponent } from './user/user.component';
-import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './user/settings/settings.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
+
+// Menu settings/admin
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { MenuAdminDetailComponent } from './admin/menu-admin/menu-admin-detail/menu-admin-detail.component';
 import { MenuAdminEditComponent } from './admin/menu-admin/menu-admin-edit/menu-admin-edit.component';
@@ -91,7 +95,7 @@ import { MenuAdminStartComponent } from './admin/menu-admin/menu-admin-start/men
     FormsModule,
     MatSelectModule
   ],
-  providers: [CartService, MenuService, AdminSerivce],
+  providers: [CartService, MenuService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

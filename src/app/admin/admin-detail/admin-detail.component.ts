@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminSerivce } from '../admin.service';
+import { AdminService } from '../admin.service';
 import { Preferences } from '../preferences.model';
 
 @Component({
@@ -11,7 +11,7 @@ export class AdminDetailComponent implements OnInit {
 
   preferences!: Preferences;
 
-  constructor(private adminService: AdminSerivce) { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
     this.preferences = this.adminService.getPreferences();

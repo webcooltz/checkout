@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AdminSerivce } from 'src/app/admin/admin.service';
+import { AdminService } from 'src/app/admin/admin.service';
 import { Entree } from '../entree.model';
 import { MenuService } from '../menu.service';
 import { Preferences } from 'src/app/admin/preferences.model';
@@ -18,7 +18,7 @@ export class MenuListComponent implements OnInit {
 
   preferences!: Preferences;
 
-  constructor(private menuService: MenuService, private adminService: AdminSerivce) { }
+  constructor(private menuService: MenuService, private adminService: AdminService) { }
 
   ngOnInit() {
     this.menu = this.menuService.fetchMenu();
@@ -37,8 +37,8 @@ export class MenuListComponent implements OnInit {
     this.menuService.fetchMenu();
   }
 
-  ngOnDestroy(): void {
-
+  ngOnDestroy() {
+    this.menuChangeSub.unsubscribe();
   }
 
 }

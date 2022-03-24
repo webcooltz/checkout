@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AdminSerivce } from '../admin.service';
+import { AdminService } from '../admin.service';
 import { Preferences } from '../preferences.model';
 
 @Component({
@@ -14,7 +14,7 @@ export class AdminEditComponent implements OnInit {
 
   @ViewChild('f') aForm!: NgForm;
 
-  constructor(private adminService: AdminSerivce) { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
     this.preferences = this.adminService.getPreferences();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminSerivce } from 'src/app/admin/admin.service';
+import { AdminService } from 'src/app/admin/admin.service';
 import { Preferences } from 'src/app/admin/preferences.model';
 import { Cart } from '../cart.model';
 import { CartService } from '../cart.service';
@@ -27,7 +27,7 @@ export class CartListComponent implements OnInit {
       this.futureDate3
   ];
 
-  constructor(private cartService: CartService, private adminService: AdminSerivce) { }
+  constructor(private cartService: CartService, private adminService: AdminService) { }
 
   ngOnInit() {
     this.cart = this.cartService.getCartInfo();

@@ -38,8 +38,6 @@ export class MenuService {
   setMenu(menu: Entree[]) {
     this.menu = menu;
     this.menuChanged.next(this.menu);
-
-    this.storeMenu();
   }
 
   storeMenu() {

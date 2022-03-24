@@ -65,7 +65,6 @@ export class MenuAdminEditComponent implements OnInit {
   onCancel() {
     this.editMode = false;
     this.mForm.reset();
-
     this.router.navigate([''], {relativeTo: this.route});
   }
 

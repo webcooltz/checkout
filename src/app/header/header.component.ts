@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminSerivce } from '../admin/admin.service';
+import { AdminService } from '../admin/admin.service';
 import { Preferences } from '../admin/preferences.model';
 import { User } from '../user/user.model';
 import { UserService } from '../user/user.service';
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   // primaryColor!: string;
 
-  constructor(private adminService: AdminSerivce,
+  constructor(private adminService: AdminService,
               private userService: UserService) { }
 
   ngOnInit() {
