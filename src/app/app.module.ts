@@ -9,9 +9,9 @@ import { MatSelectModule } from '@angular/material/select'
 
 // main
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './common/header/header.component';
 import { LandingComponent } from './landing/landing.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 // cart
 import { CartComponent } from './landing/cart/cart.component';

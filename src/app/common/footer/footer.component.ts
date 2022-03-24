@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AdminService } from '../admin/admin.service';
-import { Preferences } from '../admin/preferences.model';
+import { AdminService } from '../../admin/admin.service';
+import { Preferences } from '../../admin/preferences.model';
 
 @Component({
   selector: 'app-footer',
