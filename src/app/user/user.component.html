@@ -1,1 +1,93 @@
-<p>user works!</p>
+<h2>Welcome back, {{ user.firstName }}.</h2>
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row pad-left-right">
+          <h3>Settings</h3>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="center-panel">
+
+          <form
+            class="form" id="user-settings-form"
+            #f = ngForm (ngSubmit)="savePreferences(f)">
+
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="text" class="form-control" id="email"
+                name="email"
+                size="120"
+                max="120"
+                [ngModel]="user?.email"
+                required
+                #email="ngModel">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Username:</label>
+              <input
+                type="text" class="form-control" id="username"
+                name="username"
+                size="120"
+                max="120"
+                [ngModel]="user?.username"
+                required
+                #username="ngModel">
+            </div>
+
+            <div class="form-group">
+              <label for="email">First name:</label>
+              <input
+                type="text" class="form-control" id="firstName"
+                name="firstName"
+                size="120"
+                max="120"
+                [ngModel]="user?.firstName"
+                required
+                #firstName="ngModel">
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last name:</label>
+              <input
+                type="text" class="form-control" id="lastName"
+                name="lastName"
+                size="120"
+                max="120"
+                [ngModel]="user?.lastName"
+                required
+                #lastName="ngModel">
+            </div>
+
+            <div class="form-group">
+              <span>Role: {{ role }}</span>
+            </div>
+
+            <button
+              id="save-user-btn" class="btn btn-success"
+              type="submit">
+              Save
+            </button>
+
+          </form>
+
+          <br><br>
+
+          <button
+            id="delete-user-btn" class="btn btn-danger"
+            (click)="onDelete()">
+            Delete Account
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

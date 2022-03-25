@@ -46,7 +46,6 @@ import { CartFilterPipe } from './landing/order-history/order-filter.pipe';
 
 // Login, user, settings
 import { UserComponent } from './user/user.component';
-import { SettingsComponent } from './user/settings/settings.component';
 import { LoginComponent } from './user/login/login.component';
 import { SignupComponent } from './user/signup/signup.component';
 
@@ -79,7 +78,6 @@ import { MenuAdminStartComponent } from './admin/menu-admin/menu-admin-start/men
     CartFilterPipe,
     UserComponent,
     FooterComponent,
-    SettingsComponent,
     LoginComponent,
     SignupComponent,
     MenuAdminComponent,

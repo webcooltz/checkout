@@ -9,6 +9,9 @@ import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { LandingComponent } from './landing/landing.component';
 import { OrderHistoryComponent } from './landing/order-history/order-history.component';
 import { OrderQueueComponent } from './landing/order-queue/order-queue.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -21,7 +24,10 @@ const routes: Routes = [
     { path: 'new', component: MenuAdminEditComponent }
   ] },
   { path: 'queue', component: OrderQueueComponent },
-  { path: 'history', component: OrderHistoryComponent }
+  { path: 'history', component: OrderHistoryComponent },
+  { path: 'settings', component: UserComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent }
 ];
 
 @NgModule({

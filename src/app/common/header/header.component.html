@@ -52,13 +52,13 @@
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <ul class="nav">
           <li *ngIf="loggedIn == false">
-            <a class="dropdown-item" href="#">Login</a>
+            <a class="dropdown-item" routerLink="login">Login</a>
           </li>
           <li *ngIf="loggedIn == true">
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" routerLink="">Logout</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" routerLink="settings">Settings</a>
           </li>
         </ul>
       </div>
