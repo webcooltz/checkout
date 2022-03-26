@@ -33,9 +33,9 @@ export class AdminEditComponent implements OnInit, OnDestroy {
 
     this.preferences.title = value.title;
     this.preferences.logoImgUrl = value.logoImgUrl;
-    this.preferences.colors.primary = value.colorPrimary;
-    this.preferences.colors.secondary = value.colorSecondary;
-    this.preferences.colors.tertiary = value.colorTertiary;
+    this.preferences.primaryColor = value.colorPrimary;
+    this.preferences.secondaryColor = value.colorSecondary;
+    this.preferences.tertiaryColor = value.colorTertiary;
 
     this.adminService.updatePreferences(this.preferences);
   }

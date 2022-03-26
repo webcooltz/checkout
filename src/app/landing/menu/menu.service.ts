@@ -22,7 +22,7 @@ export class MenuService {
   fetchMenu() {
     this.http
       .get<Entree[]>(
-        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json'
+        'http://localhost:3000/landing'
       )
       .subscribe(menu => {
         this.setMenu(menu);
@@ -44,7 +44,7 @@ export class MenuService {
     let menu = this.getMenu();
     this.http
       .put(
-        'https://checkout-17e0b-default-rtdb.firebaseio.com/entrees.json',
+        'http://localhost:3000/landing',
         menu
         )
       .subscribe(response => {

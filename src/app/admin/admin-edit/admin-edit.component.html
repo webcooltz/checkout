@@ -61,7 +61,7 @@
             name="colorPrimary"
             size="120"
             max="120"
-            [ngModel]="preferences?.colors?.primary"
+            [ngModel]="preferences?.primaryColor"
             required
             #colorPrimary="ngModel"
             >
@@ -73,7 +73,7 @@
             name="colorSecondary"
             size="120"
             max="120"
-            [ngModel]="preferences?.colors?.secondary"
+            [ngModel]="preferences?.secondaryColor"
             required
             #colorSecondary="ngModel">
 
@@ -83,27 +83,7 @@
               name="colorTertiary"
               size="120"
               max="120"
-              [ngModel]="preferences?.colors?.tertiary"
-              required
-              #colorSecondary="ngModel">
-
-            <label for="colorFourth">Fourth:</label>
-            <input
-              type="text" class="form-control" id="colorFourth"
-              name="colorFourth"
-              size="120"
-              max="120"
-              [ngModel]="preferences?.colors?.fourth"
-              required
-              #colorSecondary="ngModel">
-
-            <label for="colorFifth">Fifth:</label>
-            <input
-              type="text" class="form-control" id="colorFifth"
-              name="colorFifth"
-              size="120"
-              max="120"
-              [ngModel]="preferences?.colors?.fifth"
+              [ngModel]="preferences?.tertiaryColor"
               required
               #colorSecondary="ngModel">
 

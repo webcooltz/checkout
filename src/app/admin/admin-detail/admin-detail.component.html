@@ -22,20 +22,14 @@
         <strong>Site colors:</strong>
         <ul>
           <li>
-            <strong>Primary</strong>: {{ this.preferences.colors.primary }} - <div [ngStyle]="{'background-color': '{{ this.preferences.colors.primary }}'}">Primary</div>
+            <strong>Primary</strong>: {{ this.preferences.primaryColor }} - <div [ngStyle]="{'background-color': '{{ this.preferences.primaryColor }}'}">Primary</div>
           </li>
           <li>
-            <strong>Secondary</strong>: {{ this.preferences.colors.secondary }}
+            <strong>Secondary</strong>: {{ this.preferences.secondaryColor }}
             <!-- <input type="text" [(ngModel)]="this.preferences.colors.secondary"> -->
           </li>
           <li>
-            <strong>Tertiary</strong>: {{ this.preferences.colors.tertiary }}
-          </li>
-          <li>
-            <strong>Fourth</strong>: {{ this.preferences.colors.fourth }}
-          </li>
-          <li>
-            <strong>Fifth</strong>: {{ this.preferences.colors.fifth }}
+            <strong>Tertiary</strong>: {{ this.preferences.tertiaryColor }}
           </li>
         </ul>
       </div>

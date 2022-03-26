@@ -21,14 +21,14 @@ export class AdminService {
   //         fifth: "#2176FF",
   //       }
 
-    prefChanged = new Subject<Preferences>();
+  prefChanged = new Subject<Preferences>();
 
   constructor(private http: HttpClient) {}
 
   fetchPreferences() {
     this.http
       .get<Preferences>(
-        'https://checkout-17e0b-default-rtdb.firebaseio.com/preferences.json'
+        'http://localhost:3000/admin'
       )
       .subscribe(pref => {
         this.setPreferences(pref);
@@ -47,11 +47,11 @@ export class AdminService {
   }
 
   storePreferences() {
-    let preferences = this.getPreferences();
+    let admin = this.getPreferences();
     this.http
       .put(
-        'https://checkout-17e0b-default-rtdb.firebaseio.com/preferences.json',
-         preferences
+        'http://localhost:3000/admin',
+        admin
         )
       .subscribe(response => {
       console.log(response)
