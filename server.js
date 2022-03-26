@@ -91,8 +91,9 @@ app.use(express.static(path.join(__dirname, 'dist/checkout')));
 
 // routes declared separately
 app.use('/', index);
-app.use('./menu', menuRoutes);
-app.use('./admin', adminRoutes);
+app.use('/landing', menuRoutes);
+app.use('/admin', adminRoutes);
+app.use('/menu-admin', adminRoutes);
 
 // 404
 app.get('*', (req, res) => {
