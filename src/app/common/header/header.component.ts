@@ -35,10 +35,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       )
   }
 
-  getColor() {
-    // this.primaryColor = this.preferences.colors.primary;
-  }
-
   ngOnDestroy() {
     this.adminChangeSub.unsubscribe();
 }

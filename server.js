@@ -11,6 +11,7 @@ const debug = require('debug')('node-angular');
 const index = require('./backend/routes/app');
 const menuRoutes = require('./backend/routes/menu');
 const adminRoutes = require('./backend/routes/admin');
+const menuAdminRoutes = require('./backend/routes/menu-admin');
 
 // connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/checkout',
@@ -93,7 +94,7 @@ app.use(express.static(path.join(__dirname, 'dist/checkout')));
 app.use('/', index);
 app.use('/landing', menuRoutes);
 app.use('/admin', adminRoutes);
-app.use('/menu-admin', adminRoutes);
+app.use('/menu-admin', menuAdminRoutes);
 
 // 404
 app.get('*', (req, res) => {

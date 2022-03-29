@@ -3,7 +3,7 @@ var router = express.Router();
 const Menu = require('../models/menu');
 
 
-router.get('/', (req, res, next) => {
+router.get('/menu', (req, res, next) => {
   Menu.find()
     .then(menu => {
       res.status(200).json({

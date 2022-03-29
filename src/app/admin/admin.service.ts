@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
 import { Preferences } from "./preferences.model";
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn:'root'
@@ -10,17 +11,6 @@ export class AdminService {
 
   preferences!: Preferences;
 
-  // title: "Johnny's Steakhouse",
-  //     logoImgUrl: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F553%2F381%2Foriginal%2Fsteak-vector.jpg&f=1&nofb=1",
-  //     colors:
-  //       {
-  //         primary: "#721121",
-  //         secondary: "#E6AA68",
-  //         tertiary: "#A5402D",
-  //         fourth: "#C2B2B4",
-  //         fifth: "#2176FF",
-  //       }
-
   prefChanged = new Subject<Preferences>();
 
   constructor(private http: HttpClient) {}
@@ -28,8 +18,9 @@ export class AdminService {
   fetchPreferences() {
     this.http
       .get<Preferences>(
-        'http://localhost:3000/admin'
+        'http://localhost:3000/admin/preferences'
       )
+
       .subscribe(pref => {
         this.setPreferences(pref);
       }
@@ -50,7 +41,7 @@ export class AdminService {
     let admin = this.getPreferences();
     this.http
       .put(
-        'http://localhost:3000/admin',
+        'http://localhost:3000/admin/preferences',
         admin
         )
       .subscribe(response => {

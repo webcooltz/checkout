@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Entree } from "./entree.model";
-
 import { HttpClient } from "@angular/common/http";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn:'root'
@@ -21,11 +21,22 @@ export class MenuService {
 
   fetchMenu() {
     this.http
-      .get<Entree[]>(
-        'http://localhost:3000/landing'
+      .get<{ message: string; menu: Entree[] }>(
+        'http://localhost:3000/landing/menu'
       )
-      .subscribe(menu => {
-        this.setMenu(menu);
+      .pipe(map((menu) => {
+        return menu.menu.map(menu => {
+          return {
+            name: menu.name,
+            description: menu.description,
+            imgUrl: menu.imgUrl,
+            price: menu.price,
+            id: menu.id
+          }
+        });
+      }))
+      .subscribe(transformedMenu => {
+        this.setMenu(transformedMenu);
       }
       ,(error: any) => {
         console.log(error);
@@ -40,21 +51,9 @@ export class MenuService {
     this.menuChanged.next(this.menu);
   }
 
-  storeMenu() {
-    let menu = this.getMenu();
-    this.http
-      .put(
-        'http://localhost:3000/landing',
-        menu
-        )
-      .subscribe(response => {
-      console.log(response)
-    });
-  }
-
-  getMenu() {
-    return this.menu.slice();
-  }
+  // getMenu() {
+  //   return this.menu.slice();
+  // }
 
   getMenuItem(id: string) {
     return this.menu[+id];
@@ -64,12 +63,17 @@ export class MenuService {
     if (!newEntree) {
       return;
     }
-    this.maxMenuId++;
-    newEntree.id = this.maxMenuId.toString();
-    this.menu.push(newEntree);
-    this.menuChanged.next(this.menu.slice());
 
-    this.storeMenu();
+    this.http
+      .post<Entree>(
+        'http://localhost:3000/menu-admin/new',
+        newEntree
+        )
+      .subscribe(response => {
+      console.log(response)
+    });
+
+    this.menuChanged.next(this.menu.slice());
   }
 
   updateMenu(originalEntree: Entree, newEntree: Entree) {
@@ -80,25 +84,44 @@ export class MenuService {
     if (pos < 0) {
       return;
     }
+
     newEntree.id = originalEntree.id;
     this.menu[pos] = newEntree;
-    this.menuChanged.next(this.menu.slice());
 
-    this.storeMenu();
+    this.http
+      .put<Entree>(
+        'http://localhost:3000/menu-admin/:id',
+        newEntree
+        )
+      .subscribe(response => {
+      console.log(response)
+    });
+
+  this.menuChanged.next(this.menu.slice());
   }
 
   deleteMenuItem(entree: Entree) {
     if (!entree) {
       return;
     }
-    const pos = this.menu.indexOf(entree);
-    if (pos < 0) {
-      return;
-    }
-    this.menu.splice(pos, 1);
-    this.menuChanged.next(this.menu.slice());
 
-    this.storeMenu();
+    // const pos = this.menu.indexOf(entree);
+
+    // if (pos < 0) {
+    //   return;
+    // }
+
+    // this.menu.splice(pos, 1);
+
+    this.http
+      .delete(
+        'http://localhost:3000/menu-admin/:id'
+        )
+      .subscribe(response => {
+      console.log(response)
+    });
+
+    this.menuChanged.next(this.menu.slice());
   }
 
   getMaxId(): number {

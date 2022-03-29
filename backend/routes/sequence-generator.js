@@ -1,6 +1,6 @@
 var Sequence = require('../models/sequence');
 
-var maxEntreeId;
+var maxMenuId;
 var sequenceId = null;
 
 function SequenceGenerator() {
@@ -15,7 +15,7 @@ function SequenceGenerator() {
       }
 
       sequenceId = sequence._id;
-      maxEntreeId = sequence.maxEntreeId;
+      maxMenuId = sequence.maxMenuId;
     });
 }
 
@@ -26,9 +26,9 @@ SequenceGenerator.prototype.nextId = function(collectionType) {
 
   switch (collectionType) {
     case 'entree':
-      maxEntreeId++;
-      updateObject = {maxEntreeId: maxEntreeId};
-      nextId = maxEntreeId;
+      maxMenuId++;
+      updateObject = {maxMenuId: maxMenuId};
+      nextId = maxMenuId;
       break;
     default:
       return -1;

@@ -3,7 +3,7 @@ var router = express.Router();
 const Admin = require('../models/Admin');
 
 
-router.get('/', (req, res, next) => {
+router.get('/preferences', (req, res, next) => {
   Admin.find()
     .exec((err, admin) => {
       if (err) {
@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
     })
 });
 
-router.put('/', (req, res, next) => {
+router.put('/preferences', (req, res, next) => {
   Admin.find()
     .then(admin => {
       admin.title = req.body.title;

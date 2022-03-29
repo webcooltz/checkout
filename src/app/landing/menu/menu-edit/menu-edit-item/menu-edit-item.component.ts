@@ -22,7 +22,7 @@ export class MenuEditItemComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.menu = this.menuService.getMenu();
+    // this.menu = this.menuService.fetchMenu();
 
   }
 
