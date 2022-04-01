@@ -65,12 +65,12 @@ router.put('/:id', (req, res, next) => {
   // delete
   router.delete("/:id", (req, res, next) => {
     Menu.findOne({ id: req.params.id })
-      .then(menu => {
 
+      .then(menu => {
         Menu.deleteOne({ id: req.params.id })
           .then(result => {
             res.status(204).json({
-              message: "Document deleted successfully"
+              message: "menu item deleted successfully"
             });
           })
           .catch(error => {
@@ -82,8 +82,8 @@ router.put('/:id', (req, res, next) => {
       })
       .catch(error => {
         res.status(500).json({
-          message: 'Document not found.',
-          error: { menu: 'Document not found'}
+          message: 'menu item not found.',
+          error: { menu: 'menu item not found'}
         });
       });
   });

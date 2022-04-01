@@ -51,7 +51,6 @@ import { SignupComponent } from './user/signup/signup.component';
 
 // Menu settings/admin
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
-import { MenuAdminDetailComponent } from './admin/menu-admin/menu-admin-detail/menu-admin-detail.component';
 import { MenuAdminEditComponent } from './admin/menu-admin/menu-admin-edit/menu-admin-edit.component';
 import { MenuAdminStartComponent } from './admin/menu-admin/menu-admin-start/menu-admin-start.component';
 
@@ -81,7 +80,6 @@ import { MenuAdminStartComponent } from './admin/menu-admin/menu-admin-start/men
     LoginComponent,
     SignupComponent,
     MenuAdminComponent,
-    MenuAdminDetailComponent,
     MenuAdminEditComponent,
     MenuAdminStartComponent
   ],

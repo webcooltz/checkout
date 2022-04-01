@@ -22,21 +22,16 @@ export class MenuEditItemComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // this.menu = this.menuService.fetchMenu();
-
   }
-
-  // editItem() {
-
-  // }
 
   onDelete() {
+    // console.log(this.entree);
     this.menuService.deleteMenuItem(this.entree);
-    // this.router.navigate([''], {relativeTo: this.route});
+    this.router.navigate([''], {relativeTo: this.route});
   }
 
-  onSaveEntree(menu: Entree[]) {
-    this.menuService.setMenu(menu);
-  }
+  // onSaveEntree(menu: Entree[]) {
+  //   this.menuService.setMenu(menu);
+  // }
 
 }

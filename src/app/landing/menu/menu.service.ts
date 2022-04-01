@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Entree } from "./entree.model";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { map } from 'rxjs/operators'
 
@@ -19,6 +19,7 @@ export class MenuService {
     this.maxMenuId = this.getMaxId();
   }
 
+  // ----------------- READ ----------------------
   fetchMenu() {
     this.http
       .get<{ message: string; menu: Entree[] }>(
@@ -51,74 +52,83 @@ export class MenuService {
     this.menuChanged.next(this.menu);
   }
 
-  // getMenu() {
-  //   return this.menu.slice();
-  // }
-
   getMenuItem(id: string) {
+    this.fetchMenu();
     return this.menu[+id];
   }
 
+  // --------------- CREATE ------------------
   addMenuItem(newEntree: Entree) {
     if (!newEntree) {
       return;
     }
+    newEntree.id = '';
+    const headers = new HttpHeaders({'Content-type': 'application/json'});
 
     this.http
-      .post<Entree>(
+      .post<{message: string, entree: Entree}>
+      (
         'http://localhost:3000/menu-admin/new',
-        newEntree
-        )
-      .subscribe(response => {
-      console.log(response)
+        newEntree,
+        { headers: headers }
+      )
+      .subscribe(responseData => {
+      console.log(responseData);
+      this.menu.push(responseData.entree);
+      // this.sortAndSend();
     });
 
     this.menuChanged.next(this.menu.slice());
   }
 
+  // ----------------- UPDATE ------------------------
   updateMenu(originalEntree: Entree, newEntree: Entree) {
-    if (!originalEntree) {
+    if (!originalEntree || !newEntree) {
       return;
     }
-    const pos = this.menu.indexOf(originalEntree);
+    const pos = this.menu.findIndex(e => e.id === originalEntree.id);
     if (pos < 0) {
       return;
     }
 
     newEntree.id = originalEntree.id;
-    this.menu[pos] = newEntree;
+    // newEntree._id = originalEntree._id;
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     this.http
-      .put<Entree>(
-        'http://localhost:3000/menu-admin/:id',
-        newEntree
+      .put
+        (
+          'http://localhost:3000/menu-admin/' + originalEntree.id,
+          newEntree, {headers: headers}
         )
       .subscribe(response => {
-      console.log(response)
+      console.log(response);
+      this.menu[pos] = newEntree;
+      // this.sortAndSend();
     });
 
   this.menuChanged.next(this.menu.slice());
   }
 
+  // ------------------- DELETE -----------------------
   deleteMenuItem(entree: Entree) {
     if (!entree) {
       return;
     }
-
-    // const pos = this.menu.indexOf(entree);
-
-    // if (pos < 0) {
-    //   return;
-    // }
-
-    // this.menu.splice(pos, 1);
+    const pos = this.menu.findIndex(e => e.id === entree.id);
+    if (pos < 0) {
+      return;
+    }
 
     this.http
-      .delete(
-        'http://localhost:3000/menu-admin/:id'
+      .delete
+        (
+          'http://localhost:3000/menu-admin/' + entree.id
         )
       .subscribe(response => {
-      console.log(response)
+      console.log(response);
+      this.menu.splice(pos, 1);
+      // this.sortAndSend();
     });
 
     this.menuChanged.next(this.menu.slice());

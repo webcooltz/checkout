@@ -25,7 +25,7 @@ SequenceGenerator.prototype.nextId = function(collectionType) {
   var nextId;
 
   switch (collectionType) {
-    case 'entree':
+    case 'menu':
       maxMenuId++;
       updateObject = {maxMenuId: maxMenuId};
       nextId = maxMenuId;
