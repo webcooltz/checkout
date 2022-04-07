@@ -19,21 +19,23 @@ Future features
 * Alerts/messages from store to customer
 * Queue that shows current orders in order of when they should be ready
 
-## Development server
-
-Run `ng serve`. Navigate to `http://localhost:4200/`.
-
-## Code scaffolding
-
-You can use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Development
+
+Front end:
+* Run `ng serve`. Navigate to `http://localhost:4200/`.
+
+With back end:
+* First build the project.
+* Run `npm run start:server`. Navigate to `http://localhost:3000/`.
+
 ## Deployment
 
-Run `firebase deploy` after running the build command. The site will be up shortly at "https://checkout-17e0b.web.app/"
+* Run `firebase deploy` after running the build command. The site will be up shortly at "https://checkout-17e0b.web.app/".
+* As far as the back end, I am still figuring out how to deploy that.
 
 ## Running unit tests
 
