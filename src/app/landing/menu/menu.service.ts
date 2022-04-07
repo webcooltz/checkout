@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Entree } from "./entree.model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
-import { map } from 'rxjs/operators'
+import { Subject } from "rxjs";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn:'root'
@@ -22,9 +22,10 @@ export class MenuService {
   // ----------------- READ ----------------------
   fetchMenu() {
     this.http
-      .get<{ message: string; menu: Entree[] }>(
-        'http://localhost:3000/landing/menu'
-      )
+      .get<{ message: string; menu: Entree[] }>
+        (
+          'http://localhost:3000/landing/menu'
+        )
       .pipe(map((menu) => {
         return menu.menu.map(menu => {
           return {

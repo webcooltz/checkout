@@ -25,12 +25,10 @@ export class AdminDetailComponent implements OnInit, OnDestroy {
           this.preferences = preferences;
         }
       )
-
   }
 
   ngOnDestroy() {
       this.adminChangeSub.unsubscribe();
   }
-
 
 }
